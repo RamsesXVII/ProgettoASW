@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
  <Resource id="PostgreSQL Database" type="DataSource">
       JdbcDriver org.postgresql.Driver
-      JdbcUrl jdbc:postgresql://localhost:5432/products
+      JdbcUrl jdbc:postgresql://localhost:5432/music
       UserName postgres
       Password postgres
       JtaManaged true

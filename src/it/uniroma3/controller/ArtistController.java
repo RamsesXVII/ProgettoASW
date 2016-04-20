@@ -17,9 +17,8 @@ public class ArtistController {
 
 	@ManagedProperty(value="#{param.id}")
 	private Long id;
-	private String firstName;
-	private String lastName;
-	private String email;
+	private String name;
+	private String country;
 	private List<Artist> artists;
 	private Artist artist;
 
@@ -27,18 +26,18 @@ public class ArtistController {
 	private ArtistFacade artistFacade;
 
 	public String createArtist(){
-		this.artist=artistFacade.createCustomer(firstName, lastName, email);
-		return "customer";
+		this.artist=artistFacade.createArtist(name, country);
+		return "artist";
 	}
 
-	public String listCustomers() {
-		this.customers = customerFacade.getAllCustomer();
-		return "customers"; 
+	public String listArtists() {
+		this.artists=artistFacade.getAllArtist();
+		return "artists"; 
 	}
 
-	public String findCustomer() {
-		this.customer = customerFacade.getCustomer(id);
-		return "customerDetails";
+	public String findArtist() {
+		this.artist = artistFacade.getArtist(id);
+		return "artistDetails";
 	}
 
 	public static HttpSession getSession(){
@@ -48,9 +47,9 @@ public class ArtistController {
 		return httpSession;
 	}
 
-	public String findCustomer(Long id) {
-		customerFacade.getCustomer(id);
-		return "customer";
+	public String findArtist(Long id) {
+		artistFacade.getArtist(id);
+		return "artist";
 	}
 
 	public Long getId() {
@@ -61,58 +60,47 @@ public class ArtistController {
 		this.id = id;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public String getName() {
+		return name;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getLastName() {
-		return lastName;
+	public String getCountry() {
+		return country;
 	}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setCountry(String country) {
+		this.country = country;
 	}
 
-	public String getEmail() {
-		return email;
+	public List<Artist> getArtists() {
+		return artists;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setArtists(List<Artist> artists) {
+		this.artists = artists;
 	}
 
-	public List<Customer> getCustomers() {
-		return customers;
+	public Artist getArtist() {
+		return artist;
 	}
 
-	public void setCustomers(List<Customer> customers) {
-		this.customers = customers;
+	public void setArtist(Artist artist) {
+		this.artist = artist;
 	}
 
-	public Customer getCustomer() {
-		return customer;
+	public ArtistFacade getArtistFacade() {
+		return artistFacade;
 	}
 
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
+	public void setArtistFacade(ArtistFacade artistFacade) {
+		this.artistFacade = artistFacade;
 	}
 
 
-	public CustomerFacade getCustomerFacade() {
-		return customerFacade;
-	}
-
-	public void setCustomerFacade(CustomerFacade customerFacade) {
-		this.customerFacade = customerFacade;
-	}
-	
-	public String log(){
-		return "login";
-	}
 
 }
 

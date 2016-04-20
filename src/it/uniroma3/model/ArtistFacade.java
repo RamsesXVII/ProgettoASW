@@ -6,6 +6,7 @@ import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaQuery;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -42,8 +43,11 @@ public class ArtistFacade {
 
 
 	public List<Artist> getAllArtist() {
-		Query query= em.createNamedQuery("Artist.findAll");
-		List<Artist> artists = query.getResultList();
+//		Query query = em.createNamedQuery("Artist.findAll");		
+//		return query.getResultList();
+		CriteriaQuery<Artist> cq = em.getCriteriaBuilder().createQuery(Artist.class);
+		cq.select(cq.from(Artist.class));
+		List<Artist> artists = em.createQuery(cq).getResultList();
 		return artists;
 	}
 

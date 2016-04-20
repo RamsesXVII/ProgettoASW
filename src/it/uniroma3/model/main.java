@@ -3,6 +3,7 @@ package it.uniroma3.model;
 import java.util.*;
 
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaQuery;
 public class main {
 	
 	public static void main(String[] args) {
@@ -14,16 +15,20 @@ public class main {
 		tx.begin(); 
 	//	ArtistFacade af= new ArtistFacade();
 	//	af.createArtist("Queen", "UK");
-		Query query = em.createNamedQuery("Artist.findByName");
-		query.setParameter("name", "PinkFloyd");
-		List<Artist> listArtist = query.getResultList();
-		Artist a=null;
-		Song s= null;
+		CriteriaQuery<Artist> cq = em.getCriteriaBuilder().createQuery(Artist.class);
+		cq.select(cq.from(Artist.class));
+		List<Artist> artists = em.createQuery(cq).getResultList();
+		
+		System.out.println(artists.size());
+	//	List<Artist> listArtist = query.getResultList();
+	//	Artist a=null;
+	/*	Song s= null;
 		if(listArtist.size()!=0){
 			 a= listArtist.get(0);
 			 s= new Song("Money", "1986", a);
 			em.persist(s);
-		}
+		} *(
+		
 		
 		/*		Customer c=em.find(Customer.class, new Long(51));
 		Order o= new Order();
