@@ -15,11 +15,14 @@ public class main {
 		tx.begin(); 
 	//	ArtistFacade af= new ArtistFacade();
 	//	af.createArtist("Queen", "UK");
-		CriteriaQuery<Artist> cq = em.getCriteriaBuilder().createQuery(Artist.class);
-		cq.select(cq.from(Artist.class));
-		List<Artist> artists = em.createQuery(cq).getResultList();
-		
-		System.out.println(artists.size());
+	//	Query query = em.createNamedQuery("Artist.findByName");
+	//	query.setParameter("name", "PinkFloyd");
+	//	List<Artist> listArtist = query.getResultList();
+		Query query = em.createNamedQuery("Artist.findByName");
+		query.setParameter("name","PinkFloyd");
+		Artist artist = (Artist) query.getResultList().get(0);
+		Song s= new Song("ciao", "1960", artist);
+		em.persist(s);
 	//	List<Artist> listArtist = query.getResultList();
 	//	Artist a=null;
 	/*	Song s= null;
@@ -80,5 +83,24 @@ public class main {
 	//	System.out.println(pf.retriveAllProducts().size());
 	//	OrderFacade of= new OrderFacade();
 	//	System.out.println(of.retriveAllNoSentOrders());
+		/*
+		 * <!-- <?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="music-unit"
+		transaction-type="JTA">
+		<provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
+		<jta-data-source>PostgreSQL Database</jta-data-source>
+		<!-- <non-jta-data-source>PostgreSQL Database</non-jta-data-source> -->
+	<!--	<class>it.uniroma3.model.Artist</class>
+		<class>it.uniroma3.model.Song</class>
+		<properties>
+			<property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)" />
+		</properties>
+	</persistence-unit>
+</persistence> -->
+
+		 */
 	}
 }

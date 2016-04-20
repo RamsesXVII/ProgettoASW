@@ -24,12 +24,12 @@ public class ArtistFacade {
 		return a;
 	}
 
-	public Artist getArtist(Long id) {
+	public Artist getArtistById(Long id) {
 		Artist a= em.find(Artist.class, id);
 		HttpSession session=getSession();
 		session.setAttribute("searchedArtist", a);
 		return a;
-	}
+	} 
 
 	public Artist getArtistByName(String name) {
 		Query query = this.em.createNamedQuery("Artist.findByName");
@@ -43,12 +43,8 @@ public class ArtistFacade {
 
 
 	public List<Artist> getAllArtist() {
-//		Query query = em.createNamedQuery("Artist.findAll");		
-//		return query.getResultList();
-		CriteriaQuery<Artist> cq = em.getCriteriaBuilder().createQuery(Artist.class);
-		cq.select(cq.from(Artist.class));
-		List<Artist> artists = em.createQuery(cq).getResultList();
-		return artists;
+		Query query = em.createNamedQuery("Artist.findAll");		
+		return query.getResultList();
 	}
 
 	public void updateArtist(Artist a) {

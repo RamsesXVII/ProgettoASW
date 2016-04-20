@@ -36,19 +36,12 @@ public class ArtistController {
 	}
 
 	public String findArtist() {
-		this.artist = artistFacade.getArtist(id);
+		this.artist = artistFacade.getArtistById(id);
 		return "artistDetails";
 	}
 
-	public static HttpSession getSession(){
-		FacesContext context = FacesContext.getCurrentInstance();
-		HttpServletRequest request = (HttpServletRequest)context.getExternalContext().getRequest();
-		HttpSession httpSession = request.getSession(false);
-		return httpSession;
-	}
-
 	public String findArtist(Long id) {
-		artistFacade.getArtist(id);
+		artistFacade.getArtistById(id);
 		return "artist";
 	}
 

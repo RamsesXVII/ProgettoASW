@@ -6,29 +6,33 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>Add a new Artist</title>
+<title>Add a new Song</title>
 </head>
 <body>
 	<f:view>
 		<h:form>
+		<h1>Add a new song made by ${songController.nameArtist}</h1>
   		    <div>
 				Name:
-				<h:inputText value="#{artistController.name}" required="true"
+				<h:inputText value="#{songController.name}" required="true"
 					requiredMessage="name is mandatory" id="name" />
 				<h:message for="name" />
 			</div>
 			<div>
-				Country:
-				<h:inputText value="#{artistController.country}" required="true"
-					requiredMessage="country is mandatory" id="country" />
-				<h:message for="country" />
+				Year:
+				<h:inputText value="#{songController.year}" required="true"
+					requiredMessage="year is mandatory" id="year" />
+				<h:message for="year" />
 			</div>
 			
 			<div>
-				<h:commandButton value="Submit"
-					action="#{artistController.createArtist}" />
+			<h:commandLink action="#{songController.createSong}" value="Submit">
+			<f:param name="nameArtist" value="#{songController.nameArtist}" />
+			</h:commandLink>
 			</div>
 		</h:form>
 	</f:view> 
 </body>
 </html>
+
+

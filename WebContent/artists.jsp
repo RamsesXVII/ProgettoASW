@@ -11,20 +11,19 @@
 <f:view>
 <h1>Artists</h1>
 <h:form>
-<table>
+	<table border="1">
 	<tr>
-		<th>Name</th><th>Country</th>
+	<th>Id</th><th>Name</th><th>Country</th>
 	</tr>
 	<c:forEach var="artist" items="#{artistController.artists}">
-		<tr><td>
-		<h:commandLink action="#{artistController.findArtist}" value="#{artist.name}">
-			<f:param name="id" value="#{artist.id}" />
-		</h:commandLink>
-		</td><td>${artist.country}</td></tr>
+	<tr>
+       <td>${artist.id}</td>
+       <td>${artist.name}</td>
+       <td>${artist.country}</td>
+   </tr>
 	</c:forEach>
 </table>
 </h:form>
-
 </f:view>
 </body>
 </html>

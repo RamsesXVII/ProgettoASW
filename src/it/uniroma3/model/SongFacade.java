@@ -14,15 +14,16 @@ public class SongFacade {
     private EntityManager em;
     
 	public Song createSong(String artistName,String name, String year) {
-		ArtistFacade af= new ArtistFacade();
-		Artist artist=af.getArtistByName(artistName);
+		Query query = em.createNamedQuery("Artist.findByName");
+		query.setParameter("name",artistName);
+		Artist artist = (Artist) query.getResultList().get(0);
+		
 		Song s= new Song(name, year, artist);
-	
 		em.persist(s);
 		return s;
 	}
 	
-	public Song getOrder(Long id) {
+	public Song getSong(Long id) {
 	    Song song = em.find(Song.class, id);
 		return song;
 	}
@@ -49,6 +50,11 @@ public class SongFacade {
 
 	public void createSong(Song s) {
 		em.persist(s);
+	}
+
+	public List<Artist> getAllArtist() {
+		Query query = em.createNamedQuery("Artist.findAll");		
+		return query.getResultList();
 	}
 
 	
