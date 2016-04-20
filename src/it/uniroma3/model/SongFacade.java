@@ -57,10 +57,10 @@ public class SongFacade {
 		return query.getResultList();
 	}
 
-	
-	public List<Song> getSongsByArtistId(Long id){
-		Query query = this.em.createNamedQuery("findSongsByArtistId");  //se è interrogazione molto rilevante per il dominio  usata spesso
-		query.setParameter("id", new Long(id));
+
+	public List<Song> getArtistSongs(String nameArtist) {
+		Query query = this.em.createNamedQuery("findSongsByArtistName"); 
+		query.setParameter("name", nameArtist);
 		return query.getResultList();
 	}
 

@@ -4,9 +4,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Insertion completed</title>
 </head>
 <body>
-ciaoooo
+
+<h1>The insertion has been successfully completed</h1>
+<h2>Thanks for using our app</h2>
+<h3>Come back soon</h3>	
+<h4>Bye</h4>
+<h5>:)</h5>
+<a href="index.html">Back to index</a>
 </body>
 </html>

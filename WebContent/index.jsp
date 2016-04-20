@@ -12,7 +12,7 @@
 <body>
 	<f:view>
 		<h1>Architectures for Software Systems</h1>
-		<h2>A fantastic music app!!!</h2>
+		<h2>A fantastic music app!</h2>
 	 	<ul>
 		<h:form>
 			<li><a href='<c:url value="/faces/newArtist.jsp" />'>Insert a new artist into music library</a></li>

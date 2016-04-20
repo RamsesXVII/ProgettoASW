@@ -27,7 +27,7 @@ public class ArtistController {
 
 	public String createArtist(){
 		this.artist=artistFacade.createArtist(name, country);
-		return "artist";
+		return "insertionStatus";
 	}
 
 	public String listArtists() {

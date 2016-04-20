@@ -10,6 +10,8 @@
 <body>
 <f:view>
 <h1>Artists</h1>
+<h2>Click on the name of artist to show its songs</h2>
+
 <h:form>
 	<table border="1">
 	<tr>
@@ -18,7 +20,9 @@
 	<c:forEach var="artist" items="#{artistController.artists}">
 	<tr>
        <td>${artist.id}</td>
-       <td>${artist.name}</td>
+       <td><h:commandLink action="#{songController.listArtistSongs}" value="#{artist.name}">
+			<f:param name="nameArtist" value="#{artist.name}" />
+		</h:commandLink></td>
        <td>${artist.country}</td>
    </tr>
 	</c:forEach>

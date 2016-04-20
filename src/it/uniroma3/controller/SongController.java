@@ -3,6 +3,7 @@ package it.uniroma3.controller;
 import java.util.List;
 
 import it.uniroma3.model.Artist;
+import it.uniroma3.model.ArtistFacade;
 import it.uniroma3.model.SongFacade;
 import it.uniroma3.model.Song;
 
@@ -24,12 +25,12 @@ public class SongController {
 
 	@EJB
 	private SongFacade songFacade;
-//	@EJB
-//	private ArtistFacade artistFacade;
+	@EJB
+	private ArtistFacade artistFacade;
 
 	public String createSong() {
 		this.song = songFacade.createSong(nameArtist, name, year);
-		return "song"; 
+		return "insertionStatus"; 
 	}
 
 	public String listSongs() {
@@ -38,8 +39,13 @@ public class SongController {
 	}
 
 	public String listArtists() {
-		this.artists=songFacade.getAllArtist();
+		this.artists=artistFacade.getAllArtist();
 		return "newSong"; 
+	}
+	
+	public String listArtistSongs(){
+		this.songs=songFacade.getArtistSongs(nameArtist);
+		return "songs";
 	}
 	
 	public String selectArtist(){
@@ -110,13 +116,13 @@ public class SongController {
 		this.songFacade = songFacade;
 	}
 
-//	public ArtistFacade getArtistFacade() {
-//		return artistFacade;
-//	}
+	public ArtistFacade getArtistFacade() {
+		return artistFacade;
+	}
 
-//	public void setArtistFacade(ArtistFacade artistFacade) {
-//		this.artistFacade = artistFacade;
-//	}
+	public void setArtistFacade(ArtistFacade artistFacade) {
+		this.artistFacade = artistFacade;
+	}
 	
 }
 

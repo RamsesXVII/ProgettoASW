@@ -8,7 +8,7 @@ import javax.persistence.*;
 @NamedQueries({
 	@NamedQuery(name= "Song.findAll", query="SELECT s FROM Song s"),
 	@NamedQuery(name= "Song.findById", query="SELECT s FROM Song s WHERE s.id=:id"),
-	@NamedQuery(name= "findSongsByArtistId", query="SELECT s FROM Song s Where s.artist.id= :id"),
+	@NamedQuery(name= "findSongsByArtistName", query="SELECT s FROM Song s Where s.artist.name= :name"),
 })
 
 public class Song {
