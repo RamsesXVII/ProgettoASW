@@ -8,9 +8,6 @@ import it.uniroma3.model.ArtistFacade;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.context.FacesContext;
-import javax.servlet.http.*;
-
 
 @ManagedBean
 public class ArtistController {
@@ -35,16 +32,8 @@ public class ArtistController {
 		return "artists"; 
 	}
 
-	public String findArtist() {
-		this.artist = artistFacade.getArtistById(id);
-		return "artistDetails";
-	}
-
-	public String findArtist(Long id) {
-		artistFacade.getArtistById(id);
-		return "artist";
-	}
-
+	//getters and setters
+	
 	public Long getId() {
 		return id;
 	}
@@ -74,27 +63,24 @@ public class ArtistController {
 	}
 
 	public void setArtists(List<Artist> artists) {
-		this.artists = artists;
+		this.artists = artists; 
 	}
 
 	public Artist getArtist() {
-		return artist;
+		return artist; 
 	}
 
 	public void setArtist(Artist artist) {
-		this.artist = artist;
+		this.artist = artist; 
 	}
 
 	public ArtistFacade getArtistFacade() {
-		return artistFacade;
+		return artistFacade; 
 	}
 
 	public void setArtistFacade(ArtistFacade artistFacade) {
 		this.artistFacade = artistFacade;
 	}
-
-
-
 }
 
 

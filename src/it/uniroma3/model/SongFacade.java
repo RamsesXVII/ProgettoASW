@@ -14,13 +14,20 @@ public class SongFacade {
     private EntityManager em;
     
 	public Song createSong(String artistName,String name, String year) {
+		Artist artist=null;
+		Song song=null;
+		
 		Query query = em.createNamedQuery("Artist.findByName");
 		query.setParameter("name",artistName);
-		Artist artist = (Artist) query.getResultList().get(0);
+		List<Artist> results=query.getResultList();
 		
-		Song s= new Song(name, year, artist);
-		em.persist(s);
-		return s;
+		if(!results.isEmpty()){
+			artist = results.get(0);	
+			song= new Song(name, year, artist);
+			em.persist(song);
+			return song; }
+		
+		return null;
 	}
 	
 	public Song getSong(Long id) {
@@ -34,35 +41,9 @@ public class SongFacade {
 		return songs;
 	}
 
-
-	public void updateSong(Song song) {
-        em.merge(song);
-	}
-	
-    private void deleteSong(Song song) {
-        em.remove(song);
-    }
-
-	public void deleteProduct(Long id) {
-        Song song = em.find(Song.class, id);
-        deleteSong(song);
-	}
-
-	public void createSong(Song s) {
-		em.persist(s);
-	}
-
-	public List<Artist> getAllArtist() {
-		Query query = em.createNamedQuery("Artist.findAll");		
-		return query.getResultList();
-	}
-
-
 	public List<Song> getArtistSongs(String nameArtist) {
 		Query query = this.em.createNamedQuery("findSongsByArtistName"); 
 		query.setParameter("name", nameArtist);
 		return query.getResultList();
 	}
-
-
 }

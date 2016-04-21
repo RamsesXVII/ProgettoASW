@@ -37,11 +37,6 @@ public class SongController {
 		this.songs = songFacade.getAllSong();
 		return "songs"; 
 	}
-
-	public String listArtists() {
-		this.artists=artistFacade.getAllArtist();
-		return "newSong"; 
-	}
 	
 	public String listArtistSongs(){
 		this.songs=songFacade.getArtistSongs(nameArtist);
@@ -52,6 +47,13 @@ public class SongController {
 		return "songInsertion";
 	}
 	
+	public String listArtists() {
+		this.artists=artistFacade.getAllArtist();
+		return "newSong"; 
+	}
+
+	//getters and setters
+
 	public Long getId() {
 		return id;
 	}

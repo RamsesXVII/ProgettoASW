@@ -17,8 +17,6 @@ public class Artist {
 	private String name;
 	@Column(nullable=false)
 	private String country;
-//	@OneToOne(cascade={CascadeType.PERSIST,CascadeType.REMOVE},fetch=FetchType.LAZY) se non voglio caricare indirizzi
-//	@OneToMany(mappedBy="customer",fetch=FetchType.EAGER)
 	@OneToMany(mappedBy="artist")
 	private List<Song> song;
 	
@@ -61,7 +59,6 @@ public class Artist {
 	public void setSong(List<Song> song) {
 		this.song = song;
 	}
-	
 	
 	public String toString(){
 		   final StringBuilder sb = new StringBuilder();

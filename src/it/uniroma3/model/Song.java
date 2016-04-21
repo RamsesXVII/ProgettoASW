@@ -4,7 +4,6 @@ package it.uniroma3.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name="songs")
 @NamedQueries({
 	@NamedQuery(name= "Song.findAll", query="SELECT s FROM Song s"),
 	@NamedQuery(name= "Song.findById", query="SELECT s FROM Song s WHERE s.id=:id"),
